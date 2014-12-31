@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 
 Returns a constructor function for module
