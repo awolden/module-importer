@@ -1,0 +1,21 @@
+{
+  "name": "module-importer",
+  "version": "0.0.0",
+  "description": "Bulk import of node modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awolden/module-importer.git"
+  },
+  "keywords": [
+    "module"
+  ],
+  "author": "Alex Wolden",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/awolden/module-importer/issues"
+  }
+}
