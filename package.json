@@ -17,5 +17,8 @@
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/awolden/module-importer/issues"
+  },
+  "dependencies": {
+    "underscore": "~1.7.0"
   }
 }
