@@ -7,7 +7,6 @@ var Importer = require('../index');
 console.log("importting");
 
 var opts = {
-    includeLocal: false,
     includes: [{
         path: "./includeFolder",
     }, {
