@@ -5,51 +5,36 @@ The module-importer is a fully featured tool for bulk loading modules. It provid
 
 The module-importer loads all specified modules into an object that has a collection of keys (keys are the filenames converted to camelcase) and the contents of each module. In addition each `imports` object has a property `imports._loadedModules` that contains more detailed information on every module loaded.
 
+## Table of Contents ##
+* [Installation](#installation)
+* [Testing](#testing)
+* [Documentation/Usage](#documentationusage)
+  * [Advanced Options](#advanced-options)
+  * [Available Options](#available-options)
+  * [Accessing Details on Modules Loaded](#accessing-details-on-modules-loaded)
+* [Examples](#code-examples)
+  * [Basic Usage](#basic-usage)
+  * [Filtering Local Modules](#filtering-local-modules)
+  * [Loading Non-Peer Modules](#dont-load-peer-modules-and-include-multiple-folders)
+
 ## Installation ##
 
     npm install module-importer
 
 ## Testing ##
 
-This package has some built in tests to verify functionality.
+This package has some built in tests to verify functionality. Tests use Mocha and Chai.
 
     npm install --dev
     npm test
 
 ## Documentation/Usage ##
 
-### Basic Usage ###
-
-Basic Usage is very simple and straightforward. To load all local (peer) modules, all you have to do is `require('module-importer')` and instantiate the importer
-
-```javascript
-var Importer = require('module-import');
-
-//load all local (peer) modules
-var imports = new Importer();
-
-if(!imports.error){
-    //do something with loaded modules
-}else{
-    //handle error
-}
-```
-
-### Accessing Details on Modules Loaded ###
-
-Detailed information on what modules were loaded and where from you can access the `_loadedModules` property on imports
-
-```javascript
-if(!imports.error){
-    console.log(imports._loadedModules)
-}
-```
 ### Advanced Options ###
 
 To make full use of the module-importer you can pass an options object upon instantiation.
 
 ```javascript
-//load all local (peer) modules
 var imports = new Importer({
     //opts
 });
@@ -59,14 +44,22 @@ var imports = new Importer({
 * **includeLocal** `boolean` *Flag for including peer modules*
 * **filter** `function|regex|string` *Filters out modules based on relative path to executing script*
 * **includes** `Array[objects]` *Array of option objects that specifies where else to look for modules*  
-     *Options Available for an include*
+     *Options Available for an include:*
      * **_path_** `string` *Path of the file or folder to include. Can be relative or absolute.*
-     * **_direct_** `bolean` *Indicates if the path should be loaded directly as a single module*
+     * **_direct_** `boolean` *Indicates if the path should be loaded directly as a single module*
      * **_filter_** `(see above)`
 * **localPath** `string` *Spoofs location path of executing script*
 * **localFile** `string` *Spoofs file name of executing script*
 
+### Accessing Details on Modules Loaded ###
 
+Detailed information on what modules were loaded and where they were loaded from is located in the `_loadedModules` property on imports
+
+```javascript
+if(!imports.error){
+    console.log(imports._loadedModules)
+}
+```
 
 ### Code Examples ###
 
@@ -97,7 +90,7 @@ var imports = new Importer({
 
 ##### Don't load peer modules and include multiple folders #####
 ```javascript
-//load all local (peer) modules
+//loads only non-peer modules
 var imports = new Importer({
     includeLocal: false,
     includes:[{
