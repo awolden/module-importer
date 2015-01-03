@@ -69,28 +69,17 @@ describe('Test Functionality', function () {
         });
     });
     describe('Modules get loaded correctly', function () {
-        it.skip('Module Values match the value from require()', function (done) {
+        it('Module Values match the value from require()', function (done) {
+
+            var imports = new Importer({
+                localPath: __dirname,
+                localFile: __filename
+            });
+
+            expect(imports.moduleFile).to.eql(require('./module-file'));
+            expect(imports.moduleFolder).to.eql(require('./module-folder'));
+
             done();
         });
     });
 });
-
-
-
-
-// var opts = {
-//     includes: [{
-//         path: "./includeFolder",
-//     }, {
-//         path: "../node_modules/underscore",
-//         direct: true
-//     }]
-// };
-//
-// var imports = new Importer(opts);
-//
-// if (imports.error) {
-//     console.log("There was an error -> ", imports.error);
-// }
-//
-// //console.log("require test -> ", require('./nonModuleFile'))
