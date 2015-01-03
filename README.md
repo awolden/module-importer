@@ -16,6 +16,7 @@ The module-importer loads all specified modules into an object that has a collec
   * [Basic Usage](#basic-usage)
   * [Filtering Local Modules](#filtering-local-modules)
   * [Loading Non-Peer Modules](#dont-load-peer-modules-and-include-multiple-folders)
+  * [Using With Express](#using-with-express)
 
 ## Installation ##
 
