@@ -23,7 +23,7 @@ The module-importer loads all specified modules into an object that has a collec
 
 ## Testing ##
 
-This package has some built in tests to verify functionality. Tests use Mocha and Chai.
+This package has some built-in tests to verify functionality. Tests use Mocha and Chai.
 
     npm install --dev
     npm test
@@ -107,6 +107,11 @@ var imports = new Importer({
     }]
 });
 ```
+
+## Using With Express ##
+
+    TODO: Document Common Usage With Express
+
 
 ## License ##
 Copyright (c) 2015, Alexander Wolden  

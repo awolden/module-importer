@@ -11,7 +11,11 @@
         "url": "https://github.com/awolden/module-importer.git"
     },
     "keywords": [
-        "module"
+        "module",
+        "require",
+        "bulk",
+        "load",
+        "express"
     ],
     "author": "Alex Wolden",
     "license": "BSD-3-Clause",
