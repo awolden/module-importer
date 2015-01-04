@@ -4,7 +4,12 @@
 
 var Importer = require('../index'),
     assert = require('chai').assert,
-    expect = require('chai').expect;
+    expect = require('chai').expect,
+    separator = "/";
+
+if (/^win/.test(process.platform)) {
+    var separator = "\\";
+}
 
 describe('Test Functionality', function () {
     describe('Loads correct modules', function () {
@@ -19,10 +24,10 @@ describe('Test Functionality', function () {
 
             var expectedModules = [{
                 name: "moduleFile",
-                path: __dirname + "/module-file.js"
+                path: __dirname + separator + "module-file.js"
             }, {
                 name: "moduleFolder",
-                path: __dirname + "/module-folder"
+                path: __dirname + separator + "module-folder"
             }];
 
             expect(imports._loadedModules).to.eql(expectedModules);
@@ -44,10 +49,10 @@ describe('Test Functionality', function () {
 
             var expectedModules = [{
                 name: "includeModuleFile",
-                path: __dirname + "/includeFolder/include-module-file.js"
+                path: __dirname + separator + "includeFolder" + separator + "include-module-file.js"
             }, {
                 name: "includeModuleFolder",
-                path: __dirname + "/includeFolder/include-module-folder"
+                path: __dirname + separator + "includeFolder" + separator + "include-module-folder"
             }];
 
             expect(imports._loadedModules).to.eql(expectedModules);
@@ -67,7 +72,7 @@ describe('Test Functionality', function () {
 
             var expectedModules = [{
                 name: "moduleFolder",
-                path: __dirname + "/module-folder"
+                path: __dirname + separator + "module-folder"
             }];
 
             expect(imports._loadedModules).to.eql(expectedModules);
@@ -88,7 +93,7 @@ describe('Test Functionality', function () {
 
             var expectedModules = [{
                 name: "moduleFolder",
-                path: __dirname + "/module-folder"
+                path: __dirname + separator + "module-folder"
             }];
 
             expect(imports._loadedModules).to.eql(expectedModules);
@@ -107,7 +112,7 @@ describe('Test Functionality', function () {
 
             var expectedModules = [{
                 name: "moduleFolder",
-                path: __dirname + "/module-folder"
+                path: __dirname + separator + "module-folder"
             }];
 
             expect(imports._loadedModules).to.eql(expectedModules);
