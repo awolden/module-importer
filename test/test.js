@@ -3,9 +3,12 @@
 /* global describe, it, before, after */
 
 var Importer = require('../index'),
-    assert = require('chai').assert,
-    expect = require('chai').expect,
+    chai = require('chai'),
+    assert = chai.assert,
+    expect = chai.expect,
     separator = "/";
+
+chai.should();
 
 if (/^win/.test(process.platform)) {
     var separator = "\\";
@@ -30,7 +33,7 @@ describe('Test Functionality', function () {
                 path: __dirname + separator + "module-folder"
             }];
 
-            expect(imports._loadedModules).to.eql(expectedModules);
+            imports._loadedModules.should.have.deep.members(expectedModules);
 
             done();
         });
@@ -55,7 +58,7 @@ describe('Test Functionality', function () {
                 path: __dirname + separator + "includeFolder" + separator + "include-module-folder"
             }];
 
-            expect(imports._loadedModules).to.eql(expectedModules);
+            imports._loadedModules.should.have.deep.members(expectedModules);
 
             done();
         });
@@ -75,7 +78,7 @@ describe('Test Functionality', function () {
                 path: __dirname + separator + "module-folder"
             }];
 
-            expect(imports._loadedModules).to.eql(expectedModules);
+            imports._loadedModules.should.have.deep.members(expectedModules);
 
             done();
         });
@@ -96,7 +99,7 @@ describe('Test Functionality', function () {
                 path: __dirname + separator + "module-folder"
             }];
 
-            expect(imports._loadedModules).to.eql(expectedModules);
+            imports._loadedModules.should.have.deep.members(expectedModules);
 
             done();
         });
@@ -115,7 +118,7 @@ describe('Test Functionality', function () {
                 path: __dirname + separator + "module-folder"
             }];
 
-            expect(imports._loadedModules).to.eql(expectedModules);
+            imports._loadedModules.should.have.deep.members(expectedModules);
 
             done();
         });
@@ -128,8 +131,8 @@ describe('Test Functionality', function () {
                 localFile: __filename
             });
 
-            expect(imports.moduleFile).to.eql(require('./module-file'));
-            expect(imports.moduleFolder).to.eql(require('./module-folder'));
+            imports.moduleFile.should.eql(require('./module-file'));
+            imports.moduleFolder.should.eql(require('./module-folder'));
 
             done();
         });
